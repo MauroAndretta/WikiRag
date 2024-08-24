@@ -119,6 +119,19 @@ The WikiRag system demonstrates improved performance when web search is used to 
 
 These metrics indicate that incorporating web search significantly enhances both the semantic similarity and factual accuracy of the generated answers, making the system more effective in providing relevant and correct responses.
 
+### Performance of WikiRag with and without Web Search (Improved Prompt)
+
+The WikiRag system demonstrates improved performance when web search is used to expand the context for answering queries in addition with a more refined and precise template:
+
+- **Without Web Search**:
+  - **Answer Similarity**: 0.7464
+  - **Answer Correctness**: 0.2335
+
+- **With Web Search**:
+  - **Answer Similarity**: 0.8167
+  - **Answer Correctness**: 0.3875
+
+These metrics indicate that incorporating web search significantly enhances both the semantic similarity and factual accuracy of the generated answers, making the system more effective in providing relevant and correct responses.
 
 ### Web Search for Enhanced Context
 
@@ -324,7 +337,7 @@ docker run -p 6333:6333 -v C:/Users/Mauro/Desktop/My_projects/AmmaGamma/WikiRag:
     2024-08-23 10:02:09 2024-08-23T08:02:09.305344Z  INFO qdrant::tonic: TLS disabled for gRPC API
    ```
 
-    Do note that the TLS is disabled and so you can access the dashboard on the http://localhost:6333/dashboard. If you were to visit this url then you can view the qdrant dashboard
+  Do note that the TLS is disabled and so you can access the dashboard on the http://localhost:6333/dashboard. If you were to visit this url then you can view the qdrant dashboard
 
 4. Test the Qdrant vectorstore using the notebook `notebooks\test_qdrant_client.ipynb`
 

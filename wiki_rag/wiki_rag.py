@@ -60,7 +60,7 @@ class WikiRag():
 
         self.chat_ollama = ChatOllama(
             model="llama3.1",
-            temperature=0,
+            temperature=0.3,
         )
 
         self.huggingface_embeddings = HuggingFaceEmbeddings(
