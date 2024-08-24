@@ -1,0 +1,1 @@
+from wiki_rag.wiki_rag import WikiRag

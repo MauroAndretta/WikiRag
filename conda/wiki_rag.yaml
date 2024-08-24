@@ -1,0 +1,24 @@
+# In terminal 
+# conda env create -f wiki_rag.yaml
+name: wiki_rag
+channels: 
+  - anaconda
+  - defaults
+  - conda-forge
+dependencies: 
+  - python=3.11
+  - pip
+  - ipykernel
+  - pip:
+    - qdrant-client
+    - regex
+    - wikipedia-api
+    - sentence-transformers
+    - torch==2.3.1
+    - langchain 
+    - langchain-community
+    - langchain-ollama
+    - langchain-huggingface
+    - langchain-qdrant
+    - duckduckgo-search
+    - streamlit

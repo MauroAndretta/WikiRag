@@ -1,0 +1,28 @@
+# In terminal 
+# conda env create -f wiki_rag_notebooks.yaml
+name: wiki_rag_notebooks
+channels: 
+  - anaconda
+  - defaults
+  - conda-forge
+dependencies: 
+  - python=3.11
+  - pip
+  - ipykernel
+  - pip:
+    - pandas
+    - qdrant-client
+    - sentence-transformers
+    - wikipedia-api
+    - regex
+    - nltk
+    - langchain 
+    - langchain-community
+    - torch==2.3.1
+    - langchain-ollama
+    - langchain-qdrant
+    - ragas
+    - python-dotenv
+    - seaborn
+    - matplotlib
+

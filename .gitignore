@@ -6,6 +6,13 @@ __pycache__/
 # C extensions
 *.so
 
+# Add all the sub-folder in the data folder
+data/*
+
+# Add all the sub-folder in the nootbook folder
+notebooks/chunked_documents
+notebooks/wikipedia_documents
+
 # Distribution / packaging
 .Python
 build/
