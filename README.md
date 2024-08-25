@@ -17,8 +17,7 @@
   - [Prerequisites](#prerequisites)
   - [Pipeline Overview](#pipeline-overview)
   - [Running the Pipeline](#running-the-pipeline)
-    - [Option 1: Using a Batch Script on Windows](#option-1-using-a-batch-script-on-windows)
-    - [Option 2: Using a Python Automation Script with Invoke](#option-2-using-a-python-automation-script-with-invoke)
+    - [Using a Python Automation Script with Invoke](#using-a-python-automation-script-with-invoke)
 - [Qdrant](#qdrant)
   - [Potential Problem](#potential-problem)
   - [Solution](#solution)
@@ -40,7 +39,7 @@ WikiRag is a Retrieval-Augmented Generation (RAG) system designed for question a
    ├─── `data`:  all the data
    ├─── `images`: all the images if Any
    ├─── `notebooks`: all the notebooks if Any
-   ├─── `vectorization_pipeline`: all the vectorization pipeline
+   ├─── `vectorization_pipeline`: all the vectorization pipeline scripts
    ├─── `wiki_rag`: the WikiRag class
    ├─── `.gitignore`
    ├─── `README.md`
@@ -197,57 +196,32 @@ The pipeline consists of three main steps:
 
 ### Running the Pipeline
 
-You can run the entire pipeline in one go using a script or by executing each step individually. Below are the options:
+1. Execute the three python scripts sequentially, optionally modifying the input and output params:
+  - `document_acquisition.py`
+  - `wikipedia_chunker.py`
+  - `qdrant_loader.py`
 
-#### Option 1: Using a Batch Script on Windows
+remember to activate [Qdrant](#qdrant) to be able to successfully load the qdrant points in the vector database. 
 
-If you are working on Windows, you can automate the pipeline using a `.bat` file:
+2. You can run the entire pipeline in one go using a script `vectorization_pipeline/tasks.py`. Below are the options:
 
-1. Execute the batch file by double-clicking it or running it from the command line:
-
-    ```cmd
-    wikipedia_pipeline.bat
-    ```
-
-#### Option 2: Using a Python Automation Script with Invoke
+#### Using a Python Automation Script with Invoke
 
 For a more flexible and cross-platform solution, you can use a Python script with the `Invoke` library:
 
-1. Install `Invoke`:
+1. Install `Invoke` or use directly the `wiki_rag.yaml` to create the `wiki_rag` environment which already      contains all the necessary packages:
 
     ```bash
     pip install invoke
     ```
 
-2. Create a `tasks.py` file with the following content:
-
-    ```python
-    from invoke import task
-
-    @task
-    def process_wikipedia_pages(c, urls_file, output_dir):
-        c.run(f"python wikipedia_processor.py --input_urls_file {urls_file} --output_dir {output_dir} --language it", echo=True)
-
-    @task
-    def chunk_content(c, input_dir, output_dir):
-        c.run(f"python wikipedia_chunker.py --input_dir {input_dir} --output_dir {output_dir} --chunk_size 1000 --chunk_overlap 20 --embedding_model all-MiniLM-L6-v2", echo=True)
-
-    @task
-    def load_chunks_to_qdrant(c, chunk_dir, collection_name, host="localhost", port=6333):
-        c.run(f"python qdrant_loader.py --chunks_dir {chunk_dir} --collection_name {collection_name} --host {host} --port {port}", echo=True)
-
-    @task
-    def full_pipeline(c, urls_file, output_dir, chunk_dir, collection_name, host="localhost", port=6333):
-        process_wikipedia_pages(c, urls_file, output_dir)
-        chunk_content(c, input_dir=output_dir, output_dir=chunk_dir)
-        load_chunks_to_qdrant(c, chunk_dir=chunk_dir, collection_name=collection_name, host=host, port=port)
-    ```
-
-3. Run the pipeline with the following command:
+3. Run the pipeline with the following command (it is suggested to run it from the root directory of this project to avoid problems with the paths):
 
     ```bash
-    inv full_pipeline --urls_file path/to/urls.txt --output_dir path/to/output --chunk_dir path/to/chunks --collection_name my_collection
+    python -m invoke --search-root vectorization_pipeline full-vectorization-pipeline
     ```
+
+It is also possible to personalize the params of the vectorization pipeline, see `vectorization_pipeline/tasks.py` for how to do that. 
 
 ####  Qdrant
 

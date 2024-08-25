@@ -9,13 +9,13 @@ Usage from the root directory of the repository:
     conda env create -f wiki_rag.yaml
     conda activate wiki_rag
 
-    python vectorization_pipeline/document_acquisition.py --input_urls_file path/to/urls.txt --output_dir path/to/output
+    python vectorization_pipeline/document_acquisition.py --input_urls_file path/to/urls.txt --output_docs_dir path/to/output
 
-    python vectorization_pipeline/document_acquisition.py --input_urls wikipedia_urls.txt --output_dir data/raw_document
+    python vectorization_pipeline/document_acquisition.py --input_urls wikipedia_urls.txt --output_docs_dir data/raw_document
 
 Arguments:
     --input_urls_file: Path to the file containing Wikipedia URLs.
-    --output_dir: Directory where the processed JSON files will be saved.
+    --output_docs_dir: Directory where the processed JSON files will be saved.
     --language: Language of the Wikipedia pages ('en' for English, 'it' for Italian, etc.).
 """
 
@@ -178,9 +178,9 @@ def main(input_urls_file: str, output_dir: str, language: str) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Wikipedia Page Processor")
     parser.add_argument("--input_urls_file", type=str, required=True, help="Path to the file containing Wikipedia URLs.")
-    parser.add_argument("--output_dir", type=str, required=True, help="Directory where the processed JSON files will be saved.")
+    parser.add_argument("--output_docs_dir", type=str, required=True, help="Directory where the processed JSON files will be saved.")
     parser.add_argument("--language", type=str, default="it", choices=["it", "en"], help="Language of the Wikipedia pages (default is 'it').")
 
     args = parser.parse_args()
 
-    main(args.input_urls_file, args.output_dir, args.language)
+    main(args.input_urls_file, args.output_docs_dir, args.language)

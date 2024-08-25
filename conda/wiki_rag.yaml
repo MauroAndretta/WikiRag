@@ -1,5 +1,6 @@
 # In terminal 
 # conda env create -f wiki_rag.yaml
+# pip list --format=freeze > requirements.txt
 name: wiki_rag
 channels: 
   - anaconda
@@ -22,3 +23,4 @@ dependencies:
     - langchain-qdrant
     - duckduckgo-search
     - streamlit
+    - invoke
