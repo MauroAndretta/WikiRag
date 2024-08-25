@@ -128,10 +128,10 @@ The WikiRag system demonstrates improved performance when web search is used to 
   - **Answer Correctness**: 0.2335
 
 - **With Web Search**:
-  - **Answer Similarity**: 0.8167
-  - **Answer Correctness**: 0.3875
+  - **Answer Similarity**: 0.9203
+  - **Answer Correctness**: 0.6358
 
-These metrics indicate that incorporating web search significantly enhances both the semantic similarity and factual accuracy of the generated answers, making the system more effective in providing relevant and correct responses.
+As it is possible to denote creating a tailored prompt is an essential step in all the GenAI tasks, indeed, techniques of prompt engineering are fundamentals to improve the performances and capabilities of AI systems. 
 
 ### Web Search for Enhanced Context
 
@@ -311,7 +311,6 @@ Now you can use the correct absolute path instead of the variable `$(pwd)` to la
 
 ```bash
 docker run -p 6333:6333 -v C:/your_path/WikiRag:/qdrant/storage qdrant/qdrant
-docker run -p 6333:6333 -v C:/Users/Mauro/Desktop/My_projects/AmmaGamma/WikiRag:/qdrant/storage qdrant/qdrant
 ```
 
    3.1 A successful run will look like below:
