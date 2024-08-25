@@ -163,7 +163,11 @@ To run the `WikiRag Q&A System` Streamlit application, follow these steps:
    - Install all the necessary packages using `requirements.txt` file as: `pip install -r requrement.txt`
 
 2. **Run the application**:
+
+Move in the app folder and run: 
+
 ```bash
+cd app
 streamlit run app.py
 ```
 
@@ -201,19 +205,19 @@ The pipeline consists of three main steps:
 
 remember to activate [Qdrant](#qdrant) to be able to successfully load the qdrant points in the vector database. 
 
-2. You can run the entire pipeline in one go using a script `vectorization_pipeline/tasks.py`. Below are the options:
+2. You can run the entire pipeline in one go using a script `vectorization_pipeline/tasks.py`.
 
 #### Using a Python Automation Script with Invoke
 
 For a more flexible and cross-platform solution, you can use a Python script with the `Invoke` library:
 
-1. Install `Invoke` or use directly the `wiki_rag.yaml` to create the `wiki_rag` environment which already      contains all the necessary packages:
+1. Install `Invoke` or use directly the `wiki_rag.yaml` to create the `wiki_rag` environment which already contains all the necessary packages to execute the documents vectorization pipeline:
 
     ```bash
     pip install invoke
     ```
 
-3. Run the pipeline with the following command (it is suggested to run it from the root directory of this project to avoid problems with the paths):
+2. Run the pipeline with the following command (it is suggested to run it from the root directory of this project to avoid problems with the paths):
 
     ```bash
     python -m invoke --search-root vectorization_pipeline full-vectorization-pipeline
@@ -228,7 +232,7 @@ To load the chunks into Qdrant, you need an instance of Qdrant up and running. Q
 To set up Qdrant locally or in the cloud, follow the instructions in the [Qdrant](#qdrant) section. 
 
 
-### Conclusion
+#### Conclusions
 
 This Vectorization Pipeline simplifies the process of extracting, processing, chunking, and storing Wikipedia data into a Qdrant vector database. By following the steps outlined in this section, you can quickly deploy the pipeline and begin using Qdrant for advanced search and retrieval tasks.
 
@@ -273,7 +277,7 @@ pwd
 
 2. Convert the Unix-style path to a Windows-style path.
 
-Replace `/c/` with `C:/`, and ensure that the slashes are backslashes (`\`)
+Replace `/c/` with `C:/`, and ensure that the slashes (`\`) are backslashes (`/`)
 
 ```bash
 C:/your_path/WikiRag
@@ -285,7 +289,7 @@ Now you can use the correct absolute path instead of the variable `$(pwd)` to la
 docker run -p 6333:6333 -v C:/your_path/WikiRag:/qdrant/storage qdrant/qdrant
 ```
 
-   3.1 A successful run will look like below:
+   4. A successful run will look like below:
    ```bash
     2024-08-23 10:02:09            _                 _    
     2024-08-23 10:02:09   __ _  __| |_ __ __ _ _ __ | |_  
@@ -308,9 +312,9 @@ docker run -p 6333:6333 -v C:/your_path/WikiRag:/qdrant/storage qdrant/qdrant
     2024-08-23 10:02:09 2024-08-23T08:02:09.305344Z  INFO qdrant::tonic: TLS disabled for gRPC API
    ```
 
-  Do note that the TLS is disabled and so you can access the dashboard on the http://localhost:6333/dashboard. If you were to visit this url then you can view the qdrant dashboard
+  Do note that the TLS is disabled and so you can access the dashboard on the http://localhost:6333/dashboard. If you were to visit this url then you can view the qdrant dashboard.
 
-4. Test the Qdrant vectorstore using the notebook `notebooks\test_qdrant_client.ipynb`
+5. Test the Qdrant vectorstore using the notebook `notebooks\test_qdrant_client.ipynb`
 
 
 ## Downloading a LLaMA Model Locally Using `ollama`
@@ -333,6 +337,7 @@ To install `ollama`, follow these steps:
 
 2. **Verify Installation**:
     - After installation, open your terminal (Command Prompt, PowerShell, or Bash) and verify that `ollama` is installed correctly by running:
+
       ```bash
       ollama --version
       ```
@@ -343,6 +348,7 @@ Once `ollama` is installed, you can use it to download a LLaMA model locally.
 
 1. **List Available Models**:
     - To see the available models for download, you can use the following command:
+
       ```bash
       ollama list
       ```
@@ -350,6 +356,7 @@ Once `ollama` is installed, you can use it to download a LLaMA model locally.
 
 2. **Download a Specific LLaMA Model**:
     - To download a specific LLaMA model, use the `ollama pull` command followed by the model's name. For example, to download the LLaMA3.1-8B model:
+
       ```bash
       ollama pull llama3.1
       ```
@@ -357,6 +364,7 @@ Once `ollama` is installed, you can use it to download a LLaMA model locally.
 
 3. **Verify the Download**:
     - After the download is complete, you can verify that the model has been downloaded by listing the installed models:
+    
       ```bash
       ollama list installed
       ```
