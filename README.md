@@ -120,8 +120,6 @@ These metrics indicate that incorporating web search significantly enhances both
 
 ### Performance of WikiRag with and without Web Search (Improved Prompt)
 
-The WikiRag system demonstrates improved performance when web search is used to expand the context for answering queries in addition with a more refined and precise template:
-
 - **Without Web Search**:
   - **Answer Similarity**: 0.7464
   - **Answer Correctness**: 0.2335
