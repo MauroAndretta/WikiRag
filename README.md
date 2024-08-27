@@ -1,7 +1,12 @@
 # WikiRag
 
+## Overview
+
+WikiRag is a Retrieval-Augmented Generation (RAG) system designed for question answering, it reduces hallucination thanks to the RAG architecture. It leverages Wikipedia content as a knowledge base.
+
+![WikiRag](images/wikirag.gif)
+
 ## Table of Contents
-- [Overview](#overview)
 - [Code Directory](#code-directory)
 - [WikiRag: Conversational RAG with Wikipedia Knowledge Base](#wikirag-conversational-rag-with-wikipedia-knowledge-base)
   - [How It Works](#how-it-works)
@@ -26,10 +31,6 @@
   - [Installation of `ollama`](#installation-of-ollama)
   - [Downloading a LLaMA Model](#downloading-a-llama-model)
 
-
-## Overview
-
-WikiRag is a Retrieval-Augmented Generation (RAG) system designed for question answering, it reduces hallucination thanks to the RAG architecture. It leverages Wikipedia content as a knowledge base.
 
 ### Code directory
 ```
