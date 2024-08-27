@@ -95,7 +95,7 @@ The main elements to evaluate in a RAG application like WikiRag are:
 
 ### Focus of the Evaluation Notebook
 
-In the `evaluate_wiki_rag.ipynb` notebook, the evaluation is centered on the overall generative performance of the WikiRag class, with particular focus on the following aspects:
+In the `evaluate_wiki_rag.ipynb` notebook, the [evaluation](https://www.mongodb.com/developer/products/atlas/evaluate-llm-applications-rag/) is centered on the overall generative performance of the WikiRag class, with particular focus on the following aspects:
 
 - **Answer Semantic Similarity**: This metric measures how semantically similar the generated answer is to the ground truth. A higher score indicates that the model's answer closely aligns with the intended meaning of the correct answer.
 
